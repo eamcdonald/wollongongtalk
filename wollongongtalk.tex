@@ -137,6 +137,7 @@
 \newcommand{\tf}{\mathfrak{t}}
 
 \newcommand{\Str}{\operatorname{Str}}
+\newcommand{\Tb}{\mathbb{T}}
    
 \begin{document}
 
@@ -172,7 +173,12 @@
     \end{enumerate}
 \end{frame}
 
-\begin{frame}{Asteroids}
+\section{Asteroids}\label{asteroids_section}
+\begin{frame}
+  \Huge{Part \ref{asteroids_section}: Asteroids}
+\end{frame}
+
+\begin{frame}{Rules of Asteroids}
   In the classic game of asteroids, a player controls a spaceship moving on a two dimensional toroidal space, $\Rl/\Itgr\times \Rl/\Itgr.$ There are two controls available:
   \begin{enumerate}[{\rm (i)}]
     \item{} The spaceship can be rotated,
@@ -181,7 +187,7 @@
 \end{frame}
 
 
-\begin{frame}{Asteroids}
+\begin{frame}{Configuration space of Asteroids}
   The configuration space of the game is the three-dimensional torus $\Circ^3 = (\Rl/\Itgr)^3,$ with coordinates $(x,y,\theta),$ where $(x,y)$ is the position of the spaceship and $\theta$ is its angle.
 
   The controls of the game allow us to move along the vector fields
@@ -194,32 +200,8 @@
     \dot{\gamma}(t) \in \mathrm{span}\{X_{\gamma(t)},Y_{\gamma(t)}\},\quad t\geq 0.
   \]
   \pause
-  Despite there being only two available directions, we can reach any point $(x,y,\theta)$ from any other point by travelling parallel to $X$ and $Y.$
+  Despite there being only two available directions, we can reach any point $(x,y,\theta)$ from any other point by travelling on a piecewise-smooth path parallel to $X$ and $Y.$
 \end{frame}
-
-
-\begin{frame}{Asteroids}
-  A random walk making independent increments in the $X$ and $Y$ directions looks a bit like this:
-  \begin{center}
-  \includegraphics[width=90mm]{xy_coords_single_paths.png}
-  \end{center}
-  (this is displayed in ``unwrapped" coordinates, i.e. we do not take the quotient modulo $\Itgr.$).
-\end{frame}
-
-\begin{frame}{Asteroids}
-  Ten realisations of the same random walk look like this:
-  \begin{center}
-    \includegraphics[width=90mm]{xy_coords_multiple_paths.png}
-  \end{center}
-\end{frame}
-
-\begin{frame}{Asteroids}
-  The real path through configuration space is in three dimensions, and looks like this:
-  \begin{center}
-  \includegraphics[width=90mm]{xyt_coords_multiple_paths.png}
-  \end{center}
-\end{frame}
-
 
 \begin{frame}{Asteroids}
   In general, if we can travel parallel to $X$ and $Y$ then we can approximate paths along $[X,Y],$ by the Lie-Kato-Trotter product formula
@@ -234,6 +216,32 @@
   \]
   so $\{X,Y,[X,Y]\}$ form a basis for the tangent space to $\Circ^3$ at every point.
 \end{frame}
+
+
+\begin{frame}{Random walks}
+  A random walk making independent increments in the $X$ and $Y$ directions looks a bit like this:
+  \begin{center}
+  \includegraphics[width=90mm]{xy_coords_single_paths.png}
+  \end{center}
+  (this is displayed in ``unwrapped" coordinates, i.e. we do not take the quotient modulo $\Itgr^2.$).
+\end{frame}
+
+\begin{frame}{Random walks}
+  Ten realisations of the same random walk look like this:
+  \begin{center}
+    \includegraphics[width=90mm]{xy_coords_multiple_paths.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Random walks}
+  The real path through configuration space is in three dimensions, and looks like this:
+  \begin{center}
+  \includegraphics[width=90mm]{xyt_coords_multiple_paths.png}
+  \end{center}
+  (again, the picture is of $\Rl^3$ rather than $\Circ^3$ for simplicity).
+\end{frame}
+
+
 
 \begin{frame}{Asteroids}
   Thinking about $X$ and $Y$ as derivations (not just as directions), we should think of $X,Y$ as being order $1$ and $[X,Y]$ as being order $2.$
@@ -262,18 +270,29 @@
   This implies hypoellipticity (i.e., $\Theta u\in C^\infty \Rightarrow u \in C^\infty$) and also the discreteness of the spectrum of $\Theta.$
 \end{frame}
 
-\begin{frame}
-  It is not obvious at all, but
-  \[
-    \lambda(n,-\Theta) \sim \frac{2\sqrt{3}}{\pi} n^{\frac{1}{2}},\quad n\to\infty
-  \]
-  Note that an elliptic second order operator $P\geq 0$ on a compact $d$-manifold $X$ obeys
-  \[
-    \lambda(n,P) \sim c_d n^{\frac{2}{d}}.
-  \]
-  \emph{The spectral dimension of Asteroids is $4$, not three!}
+\begin{frame}{The Asteroids Weyl law}
+  \begin{theorem}[General Weyl law]
+    Note that an elliptic second order differential operator $P\geq 0$ on a compact $d$-manifold has discrete spectrum $0<\lambda(1,P)\leq \lambda(2,P)\leq \lambda(3,P)\leq\cdots$ and there exists a constant $c_d$ such that as $n\to\infty$ we have
+    \[
+      \lambda(n,P) \sim c_d\mathrm{Vol}(X)^{\frac2d} n^{\frac{2}{d}}.
+    \]
+  \end{theorem}
+\pause
+  \begin{theorem}[Weyl law for Asteroids]
+    The $n$th smallest eigenvalue of $-\Theta$ obeys
+    \[
+      \lambda(n,-\Theta) \sim \frac{2\sqrt{3}}{\pi} n^{\frac{1}{2}},\quad n\to\infty
+    \]
+  \end{theorem}
   \pause
+  \emph{The spectral dimension of Asteroids is $4$, not three!}
   What is going on here?
+\end{frame}
+
+\section{Carnot manifolds and graded Lie groups}\label{carnot_section}
+
+\begin{frame}
+  \Huge{Part \ref{carnot_section}: Carnot manifolds and graded Lie groups}
 \end{frame}
 
 \begin{frame}{Carnot manifolds}
@@ -313,6 +332,8 @@
     G = \exp(\gf).
   \]
   Nilpotent groups are very special: the exponential mapping is a homeomorphism, and the Lebesgue measure of $\gf$ pushes forward to the Haar measure of $G.$
+
+  Alternative point of view: $\gf$ and $G$ are identical as sets, and $G$ is equipped with the group law determined by the Baker-Campbell-Hausdorff formula. The nilpotency of the group ensures that the BCH series is finite.
 %   Suppose that $\gf_1$ has a basis $\{X_1,\ldots,X_m\}.$ Under the homeomorphism $G\approx \Rl^N,$ the basis
 %   \[
 %     X_1,\ldots,X_m
@@ -321,15 +342,25 @@
 \end{frame}
 
 
-\begin{frame}{Graded Lie groups}
+\begin{frame}{The Heisenberg group}
   The prototypical example is the Heisenberg Lie group. This one has $\gf = \mathrm{span}\{\Xc,\Yc,\Tc\},$ with $[\Xc,\Yc] = \Tc$ and all other commutators vanishing. The grading is
   \[
     \gf_1 = \mathrm{span}\{\Xc,\Yc\},\quad \gf_2 = \mathrm{span}\{\Tc\}.
   \]
+  The homogeneous dimension is $Q=1\cdot 2 + 2\cdot 1 = 4.$
+  The representation theory of the Heisenberg Lie group is well-known since Stone and von Neumann. The unitary irreducible representations are enumerated as
+  \[
+    \widehat{G} = \{\pi_{\alpha,\beta}\}_{\alpha,\beta\in \Rl}\sqcup \{\pi_s\}_{s \in \Rl\setminus \{0\}}
+  \]
+  where $\pi_{\alpha,\beta}$ are the one-dimensional representations $\pi_{\alpha,\beta}(\Xc) = i\alpha,\pi_{\alpha,\beta}(\Yc) = i\beta$ and $\pi_{s}$
+  are the infinite dimensional Schr\"{o}dinger representations,
+  \[
+    \pi_s(\Xc) = \sgn(s)|s|^{\frac12}\partial_x,\quad \pi_s(\Yc) = -i|s|^{\frac12}x.
+  \]
 \end{frame}
 
 \begin{frame}{The osculating group}
-  From the data of $(X,H),$ we define the {\it associated graded bundle} $\mathfrak{t}_HX$, which is the graded vector bundle over $X$ formed by
+  From the data of a Carnot manifold $(X,H),$ we define the {\it associated graded bundle} $\mathfrak{t}_HX$, which is the graded vector bundle over $X$ formed by
   \[
       \mathfrak{t}_HX=\bigoplus_{n=1}^N (\mathfrak{t}_HX)^n,\qquad\text{where}\qquad (\mathfrak{t}_HX)^n=H^n/H^{n-1}.
   \]
@@ -344,6 +375,35 @@
 
   \pause
   We should think of the $T_HX$ as being an infinitesimal model for $X$ with its filtration $H.$
+\end{frame}
+
+\begin{frame}{The homogeneous dimension}
+  The number
+  \[
+    d_H := \sum_{k=1}^\infty k\cdot \mathrm{rank}(\tf_HX^k) = \sum_{k=1}^N \mathrm{rank}(H^k)
+  \]
+  is called the homogenous dimension of $(X,H).$ This is the homogeneous dimension of the fibres of $T_HX$ as a graded Lie group.
+\end{frame}
+
+
+\begin{frame}{The asteroids example}
+  When $X=  \Circ^3$ is equipped with the filtration $H^1 = \mathrm{span}\{X,Y\},$ then the fibres of the osculating Lie group are all the Heisenberg group, and the homogeneous dimension is $4.$
+
+\end{frame}
+
+
+
+\section{The tangent groupoid}\label{groupoid_section}
+\begin{frame}
+  \Huge{Part \ref{groupoid_section}: The tangent groupoid}
+\end{frame}
+
+\begin{frame}{The order of a differential operator}
+  A general differential operator $P$ on a manifold $X$ is a polynomial in vector fields. A filtration $H$ of $TX$ induces a filtration of the algebra $\mathrm{DO}(X)$ of differential operators on $X,$
+  \[
+    \mathrm{DO}(X) = \bigcup_{m\geq 0} \mathrm{DO}_H^m(X)
+  \]
+  where $\mathrm{DO}_H^m(X)$ is the set of differential operators of $H$-order $m.$ We would like to understand these differential operators better. The standard method is to build a \emph{pseudodifferential calculus}.
 \end{frame}
 
 \begin{frame}{The Connes tangent groupoid}
@@ -368,7 +428,6 @@
   As $\hbar\to 0,$ the noncommutative algebra of $\hbar$-pseudodifferential operators under operator composition is supposed to reduce to the commutative algebra of symbols under pointwise multiplication.
 \end{frame}
 
-
 \begin{frame}{Kernels of pseudodifferential operators}
   The Schwartz kernel of a pseudodifferential operators with symbol $\sigma$ is given by the oscillatory integral
   \[
@@ -390,7 +449,16 @@
   \[
     \mathbb{T}X = (TX\times \{0\})\sqcup (X\times X\times \Rl^{\times}).
   \]
-  Connes invented a good topology for $\mathbb{T}X,$ making it a manifold of dimension $2\mathrm{dim}(X)+1.$ Better yet, this is a \emph{Lie groupoid}, with range and source maps
+  Connes invented a good topology for $\mathbb{T}X,$ making it a manifold of dimension $2\mathrm{dim}(X)+1.$
+
+  Roughly speaking, the topology is set up so that
+  \[
+    \lim_{\varepsilon\to 0} (x,x+\varepsilon z,\varepsilon) = ((x,z),0).
+  \]
+\end{frame}
+
+\begin{frame}{The tangent groupoid}
+  Better yet, this is a \emph{Lie groupoid}, with range and source maps
   \[
     r(x,y,\hbar) = (x,\hbar),\quad s(x,y,\hbar) = (y,\hbar),\quad r((x,z),0) = s((x,z),0) = (x,0)
   \]
@@ -402,20 +470,80 @@
 
 \begin{frame}{The tangent groupoid}
   Elements of the convolution algebra of the groupoid $\mathbb{T}X$ are distributions $f,g \in \Dc'(\mathbb{T}X),$ with convolution product
-  \[
-    (f\ast g)(x,y,h) = \int_{X} f(x,w,h)g(w,y,h)\,dw,\quad (f\ast g)((x,z),0) =\int_{T_xX} f((x,z-z'),0)g((x,z'),0)\,dz'.
-  \]
+  \begin{align*}
+    (f\ast g)(x,y,h) &= \int_{X} f(x,w,h)g(w,y,h)\,dw,\\
+    (f\ast g)((x,z),0) &=\int_{T_xX} f((x,z-z'),0)g((x,z'),0)\,dz'.
+  \end{align*}
   That is: the convolution of distributions on $\mathbb{T}X$ looks like composition of kernels of pseudodifferential operators.
 
-  Can we use this as a basis to define an algebra of pseudodifferential operators?
+  Can we use this as a basis for a definition of an algebra of pseudodifferential operators?
 \end{frame}
-
 
 \begin{frame}{The zoom action}
-
+  The tangent groupoid $\Tb X$ comes equipped with a natural action of $\Rl^{\times}:$
+  \[
+    \alpha_{\lambda}(x,y,\hbar) = (x,y,\lambda^{-1} \hbar),\quad \alpha_{\lambda}((x,z),0) = (x,\lambda z).
+  \]
+  This is the \emph{zoom action} (or the Debord-Skandalis action).
+  This turns out to be the key to characterising the kernels of $\hbar$-pseudodifferential operators.
+  Terminology: a distribution $P\in \Dc'(\Tb X)$ is called $r$-fibred if (roughly speaking) $P(x,y,\hbar)$ is smooth in the $x$ and $\hbar$ variables.
+  \begin{theorem}[van Erp-Yuncken (2019)]
+    An $r$-fibred distribution $P\in \Dc'(\Tb X)$ is the family of kernels of a classical pseudodifferential operator of order $m$ if and only if for all $\lambda>0,$ we have
+    \[
+      \lambda^{-m-\mathrm{dim}(X)}P\circ \alpha_{\lambda}^{-1}-P \in C^\infty(\Tb_H X).
+    \]
+  \end{theorem}
+  \emph{Note to experts: I am ignoring issues of support and choice of measure}
 \end{frame}
 
+%
+% \begin{frame}{The $H$-tangent groupoid}
+%   A pseudodifferential kernel $P$ in van Erp-Yuncken's sense has the form $P(x,y,\hbar),$ and as $\hbar\to 0,$ for every $x$ we have the kernel $P((x,\cdot),0)$ of a convolution operator on the tangent space $T_xX.$
+%
+% \end{frame}
 
+\begin{frame}{The $H$-tangent groupoid}
+  An advantage of the groupoid viewpoint is that it can easily be adapted to build pseudodifferential calculi in non-classical situations.
+  \begin{definition}[van Erp-Yuncken (2019)]
+      Let $(X,H)$ be a Carnot manifold. The $H$-tangent groupoid is defined as a set by
+      \[
+        \Tb_HX = T_HX\times \{0\}\sqcup X\times X\times \Rl^{\times}.
+      \]
+      There is an appropriate topology on $\Tb_HX$ making it a manifold, similar to the tangent groupoid but taking the filtration into account.
+  \end{definition}
+  Van Erp and Yuncken build algebras of pseudodifferential operators inside the convolution algebra of $\Tb_HX$ and prove its basic properties.
+\end{frame}
+
+\section{Dave and Haller's Weyl law}\label{weyl_section}
+
+
+\begin{frame}
+  \Huge{Part \ref{weyl_section}: Dave and Haller's Weyl law}
+\end{frame}
+
+\begin{frame}\frametitle{$H$-elliptic differential operators}
+  Let $(X,H)$ be a Carnot manifold. Recall that we built a bundle of nilpotent Lie algebras $\tf_HX$ out of $X.$
+
+  Given a differential operator $P \in \mathrm{DO}^m_H(X),$ we can form its principal cosymbol $\sigma_m(P),$ which is an element of the universal enveloping algebra $\Uc(\tf_HX).$
+
+  The rule is that if $X\in \Gamma H^j$ is a vector field, then at $x\in X,$ $\sigma_j(X)_x = X_x+H_x^{j-1}$ is the image of $X$ in the quotient $H^{j}_x/H^{j-1}_x.$
+  \begin{definition}
+    A differential operator $P\in \mathrm{DO}^m_H(X)$ is called \emph{Rockland} if for all $x \in X$ and all nontrivial unitary irreducible representations $\pi$ of $T_HX_x,$ the image $\pi(\sigma_m(P)_x)$
+    is injective.
+  \end{definition}
+  Rockland operators are the Carnot analogy of elliptic operators. In the unfiltered case, the Rockland condition amounts to the invertibility of the principal symbol away from zero.
+\end{frame}
+
+\begin{frame}
+\begin{theorem}[Dave-Haller (2020)]
+  Let $P\geq 0$ be a Rockland operator of order $m$ on a Carnot manifold $(X,H).$ Then $P$ has discrete spectrum, and there is a constant $c_P$ such that the $n$th smallest eigenvalue obeys
+  \[
+      \lambda(n,P) \sim c_Pn^{\frac{m}{d_H}}.
+  \]
+  The constant is computable in terms of the principal cosymbol of $P$ and the Plancherel measure of the osculating group.
+\end{theorem}
+This explains the operator $\Theta$ in the Asteroids example: there the osculating group was the Heisenberg group, we had $m=2$ and $d_H=4.$ The $H$-ellipticity is easily checked using the well-known representation theory of the Heisenberg group.
+\end{frame}
 
 
 \begin{frame}
