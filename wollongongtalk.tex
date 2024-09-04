@@ -166,9 +166,148 @@
         \item{} The tangent groupoid (of Connes)
         \item{} The $H$-tangent groupoid (of van Erp and Yuncken)
         \item{} The Volterra calculus
-        \item{} The Weyl law in Carnot-Caratheodory geometry
+        \item{} Dave-Haller's Weyl law for $H$-elliptic operators.
     \end{enumerate}
 \end{frame}
+
+\begin{frame}{Asteroids}
+  In the classic game of asteroids, a player controls a spaceship moving on a two dimensional toroidal space, $\Rl/\Itgr\times \Rl/\Itgr.$ There are two controls available:
+  \begin{enumerate}[{\rm (i)}]
+    \item{} The spaceship can be rotated
+    \item{} The spaceship can be moved forward along the direction it is facing.
+  \end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Asteroids}
+  The configuration space of the game is the three-dimensional torus $\Circ^3 = (\Rl/\Itgr)^3,$ with coordinates $(x,y,\theta),$ where $(x,y)$ is the position of the spaceship and $\theta$ is its angle.
+
+  The controls of the game allow us to move along the vector fields
+  \[
+    X = \cos(\theta)\partial_x+\sin(\theta)\partial_y,\quad Y = \partial_\theta.
+  \]
+  \pause
+  The player moves the spaceship along a path which is parallel to the span of $X$ and $Y.$ That is, the path of the spaceship in configuration space is $\{\gamma(t)\}_{t\geq 0},$ where
+  \[
+    \dot{\gamma}(t) \in \mathrm{span}\{X_{\gamma(t)},Y_{\gamma(t)}\},\quad t\geq 0.
+  \]
+  \pause
+  Despite there being only two available directions, we can reach any point $(x,y,\theta)$ from any other point by travelling parallel to $X$ and $Y.$
+\end{frame}
+
+
+\begin{frame}{Asteroids}
+  In general, if we can travel parallel to $X$ and $Y$ then we can approximate paths along $[X,Y],$ by the Lie-Kato-Trotter product formula
+  \[
+    \exp(t[X,Y]) = \lim_{n\to\infty} (\exp(\frac{t}{n}X)\exp(\frac{t}{n}Y)\exp(-\frac{t}{n}(X+Y))\exp(-\frac{t}{n}Y))^n.
+  \]
+  But moving along $[X,Y]$ is harder than moving along $X$ and $Y.$
+
+  In the asteroids example,
+  \[
+    [X,Y] = \sin(\theta)\partial_x-\cos(\theta)\partial_y
+  \]
+  so $\{X,Y,[X,Y]\}$ form a basis for the tangent space to $\Circ^3$ at every point.
+\end{frame}
+
+\begin{frame}{Asteroids}
+  Thinking about $X$ and $Y$ as derivations (not just as directions), we should think of $X,Y$ as being order $1$ and $[X,Y]$ as being order $2.$
+
+  The operator
+  \[
+    \Xi = X^2+Y^2 = \partial_\theta^2+(\cos(\theta)\partial_x+\sin(\theta)\partial_y)^2
+  \]
+  is homogeneous of order $2.$
+\end{frame}
+
+\begin{frame}{Carnot manifolds}
+  The plane bundle $\mathrm{span}(X,Y)\subset T\Circ^3$ is an example of a contact structure, and this leads us to what is in general called a Carnot manifold.
+  \begin{definition}
+    A \emph{Carnot manifold} is a manifold $X$ equipped with a filtration of sub-bundles of $TX.$ That is, there are subbundles $(H^j)_{j=0}^N$ such that
+    \[
+      0 = H^0 < H^1 < \cdots < H^N = TX
+    \]
+    and if $E\in \Gamma H^j, F\in \Gamma H^j,$ then $[E,F] \in \Gamma H^{j+k}.$
+  \end{definition}
+  We should think of the directions in $H^j$ as having ``order $j$".
+\end{frame}
+
+\begin{frame}{Differential operators on Carnot manifolds}
+  We would like to understand operators coming from Carnot manifolds, such as
+  \[
+    \Xi = X^2+Y^2 = \partial_\theta^2+(\cos(\theta)\partial_x+\sin(\theta)\partial_y)^2
+  \]
+  from the asteroids example. What do we want to understand?
+  \begin{itemize}
+    \item{} $\Xi$ is not elliptic, but $(1-\Xi)^{-1}$ does improve regularity somewhat. Why, and by how much?
+    \item{} The spectrum of $\Xi$ is discrete, with a sequence of eigenvalues $0\leq \lambda(1,\Xi) \leq \lambda(2,\Xi) \leq \cdots.$ What is their asymptotic behaviour?
+  \end{itemize}
+  The usual way to analyse differential operators is to build a pseudodifferential calculus.
+\end{frame}
+
+\begin{frame}{The Connes tangent groupoid}
+  The usual recipe for defining pseudodifferential operators on a manifold $X$ is the following procedure:
+  \begin{enumerate}
+      \item{} Identify a class of symbols $\sigma$ on $\Rl^d.$
+      \item{} Define pseudodifferential operators $\Op(\sigma)$ by a quantisation formula such as
+      \[
+        \Op(\sigma)u(x) = (2\pi)^{-d} \int_{\Rl^d} e^{i(x,\xi)} \sigma(x,\xi)\widehat{f}(\xi)\,d\xi
+      \]
+      \item{} Show that the class of pseudodifferential operators just defined is invariant under change of variables
+      \item{} A pseudodifferential operator on a manifold $X$ is a linear operator $T:C^\infty_c(X)\to C^\infty(X)$ which has smooth kernel away from the diagonal and which is pseudodifferential in every chart.
+  \end{enumerate}
+  This is a little inelegant, is there a better way?
+\end{frame}
+
+\begin{frame}{Semiclassical quantisation}
+  Often it is better to quantise a symbol $\sigma$ into a whole family of operators $\Op_{\hbar}(\sigma)$ depending on a parameter $\hbar,$ by a formula such as
+  \[
+    \Op_{\hbar}(\sigma)u(x) = (2\pi)^{-d} \int_{\Rl^d} e^{i(x,\xi)}\sigma(x,\hbar \xi)\widehat{f}(\xi)\,d\xi.
+  \]
+  As $\hbar\to 0,$ the noncommutative algebra of $\hbar$-pseudodifferential operators under operator composition is supposed to reduce to the commutative algebra of symbols under pointwise multiplication.
+\end{frame}
+
+
+\begin{frame}{Kernels of pseudodifferential operators}
+  The Schwartz kernel of a pseudodifferential operators with symbol $\sigma$ is given by the oscillatory integral
+  \[
+      K(x,y) = (2\pi)^{-d}\int_{\Rl^d} e^{i(x-y)\cdot \xi}\sigma(x,\xi)\,d\xi
+  \]
+  (in the distribution sense). If we consider the kernel $K(\cdot,\cdot,\hbar)$ of the $\hbar$-quantisation, we should have
+  \[
+      K(x,y,\hbar) = (2\pi \hbar)^{-d} \int_{\Rl^d} e^{i\frac{x-y}{\hbar}\cdot \xi}\sigma(x,\xi)\,d\xi.
+  \]
+  In the limit as $\hbar\to 0,$ what should happen is that this looks more and more like the kernel of a convolution operator.
+  Really, the kernel $K$ of a pseudodifferential operator on a manifold $X$ should be thought of as a function (distribution) on the space
+  \[
+      \mathbb{T}X = (TX\times \{0\})\sqcup (X\times X\times (0,\infty)).
+  \]
+\end{frame}
+
+\begin{frame}{The tangent groupoid}
+  Let $X$ be a manifold, and define the set
+  \[
+    \mathbb{T}X = (TX\times \{0\})\sqcup (X\times X\times \Rl^{\times}).
+  \]
+  Connes invented a good topology for $\mathbb{T}X,$ making it a manifold of dimension $2\mathrm{dim}(X)+1.$ Better yet, this is a \emph{Lie groupoid}, with range and source maps
+  \[
+    r(x,y,\hbar) = (x,\hbar),\quad s(x,y,\hbar) = (y,\hbar),\quad r((x,z),0) = s((x,z),0) = (x,0)
+  \]
+  and composition law
+  \[
+    (x,y,\hbar)\circ (y,w,\hbar) = (x,w,\hbar),\quad ((x,z),0)\circ ((x,z'),0) = (x,z+z',0).
+  \]
+\end{frame}
+
+\begin{frame}{The tangent groupoid}
+  Elements of the convolution algebra of the groupoid $\mathbb{T}X$ are distributions $f,g \in \Dc'(\mathbb{T}X),$ with convolution product
+  \[
+    (f\ast g)(x,y,h) = \int_{X} f(x,w,h)g(w,y,h)\,dw,\quad (f\ast g)((x,z),0) =\int_{T_xX} f((x,z-z'),0)g((x,z'),0)\,dz'.
+  \]
+  That is: the convolution of distributions on $\mathbb{T}X$ looks like composition of kernels of pseudodifferential operators.
+\end{frame}
+
+
 
 
 \begin{frame}
