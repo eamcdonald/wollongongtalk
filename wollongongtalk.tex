@@ -133,6 +133,8 @@
 
 \newcommand{\mf}{\mathfrak{m}}
 
+\newcommand{\gf}{\mathfrak{g}}
+\newcommand{\tf}{\mathfrak{t}}
 
 \newcommand{\Str}{\operatorname{Str}}
    
@@ -173,8 +175,8 @@
 \begin{frame}{Asteroids}
   In the classic game of asteroids, a player controls a spaceship moving on a two dimensional toroidal space, $\Rl/\Itgr\times \Rl/\Itgr.$ There are two controls available:
   \begin{enumerate}[{\rm (i)}]
-    \item{} The spaceship can be rotated
-    \item{} The spaceship can be moved forward along the direction it is facing.
+    \item{} The spaceship can be rotated,
+    \item{} The spaceship can be moved forward.
   \end{enumerate}
 \end{frame}
 
@@ -197,6 +199,29 @@
 
 
 \begin{frame}{Asteroids}
+  A random walk making independent increments in the $X$ and $Y$ directions looks a bit like this:
+  \begin{center}
+  \includegraphics[width=90mm]{xy_coords_single_paths.png}
+  \end{center}
+  (this is displayed in ``unwrapped" coordinates, i.e. we do not take the quotient modulo $\Itgr.$).
+\end{frame}
+
+\begin{frame}{Asteroids}
+  Ten realisations of the same random walk look like this:
+  \begin{center}
+    \includegraphics[width=90mm]{xy_coords_multiple_paths.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Asteroids}
+  The real path through configuration space is in three dimensions, and looks like this:
+  \begin{center}
+  \includegraphics[width=90mm]{xyt_coords_multiple_paths.png}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}{Asteroids}
   In general, if we can travel parallel to $X$ and $Y$ then we can approximate paths along $[X,Y],$ by the Lie-Kato-Trotter product formula
   \[
     \exp(t[X,Y]) = \lim_{n\to\infty} (\exp(\frac{t}{n}X)\exp(\frac{t}{n}Y)\exp(-\frac{t}{n}(X+Y))\exp(-\frac{t}{n}Y))^n.
@@ -215,9 +240,40 @@
 
   The operator
   \[
-    \Xi = X^2+Y^2 = \partial_\theta^2+(\cos(\theta)\partial_x+\sin(\theta)\partial_y)^2
+    \Theta = X^2+Y^2 = \partial_\theta^2+(\cos(\theta)\partial_x+\sin(\theta)\partial_y)^2
   \]
   is homogeneous of order $2.$
+  \pause
+  \begin{itemize}
+    \item{} $\Theta$ is not elliptic, but $(1-\Theta)^{-1}$ does improve regularity somewhat. Why, and by how much?
+    \item{} The spectrum of $\Theta$ is discrete, with a sequence of eigenvalues $0\leq \lambda(1,-\Theta) \leq \lambda(2,-\Theta) \leq \cdots$ What is their asymptotic behaviour?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Asteroids}
+ Let $\|u\|_{s}$ denote the standard Hilbert-Sobolev norm of order $s$ of $u\in C^\infty(\Circ^3).$ That is,
+ \[
+      \|u\|_s := \|(1-\partial_x^2-\partial_y^2-\partial_z^2)^{\frac{s}{2}}u\|_{L_2(\Circ^3)}.
+ \]
+ A highly non-trivial calculation gives us the \emph{sub-elliptic estimates}:
+  \[
+      \|u\|_{s+\frac12}\lesssim_s \|\Theta u\|_s+\|u\|_s.
+  \]
+  This implies hypoellipticity (i.e., $\Theta u\in C^\infty \Rightarrow u \in C^\infty$) and also the discreteness of the spectrum of $\Theta.$
+\end{frame}
+
+\begin{frame}
+  It is not obvious at all, but
+  \[
+    \lambda(n,-\Theta) \sim \frac{2\sqrt{3}}{\pi} n^{\frac{1}{2}},\quad n\to\infty
+  \]
+  Note that an elliptic second order operator $P\geq 0$ on a compact $d$-manifold $X$ obeys
+  \[
+    \lambda(n,P) \sim c_d n^{\frac{2}{d}}.
+  \]
+  \emph{The spectral dimension of Asteroids is $4$, not three!}
+  \pause
+  What is going on here?
 \end{frame}
 
 \begin{frame}{Carnot manifolds}
@@ -230,19 +286,64 @@
     and if $E\in \Gamma H^j, F\in \Gamma H^j,$ then $[E,F] \in \Gamma H^{j+k}.$
   \end{definition}
   We should think of the directions in $H^j$ as having ``order $j$".
+  \pause
+  I will concentrate on the example $X = \Circ^3,$ with $N=2$ and $H^1 = \mathrm{span}\{X,Y\}.$
 \end{frame}
 
-\begin{frame}{Differential operators on Carnot manifolds}
-  We would like to understand operators coming from Carnot manifolds, such as
+
+\begin{frame}{Graded Lie groups}
+  The most fundamental example of a Carnot manifold is a graded nilpotent Lie group. These are important in the general theory as local models.
+
+  Let $\gf$ be a Lie algebra which admits a direct sum decomposition
   \[
-    \Xi = X^2+Y^2 = \partial_\theta^2+(\cos(\theta)\partial_x+\sin(\theta)\partial_y)^2
+    \gf = \bigoplus_{n=1}^\infty \gf_n
   \]
-  from the asteroids example. What do we want to understand?
-  \begin{itemize}
-    \item{} $\Xi$ is not elliptic, but $(1-\Xi)^{-1}$ does improve regularity somewhat. Why, and by how much?
-    \item{} The spectrum of $\Xi$ is discrete, with a sequence of eigenvalues $0\leq \lambda(1,\Xi) \leq \lambda(2,\Xi) \leq \cdots.$ What is their asymptotic behaviour?
-  \end{itemize}
-  The usual way to analyse differential operators is to build a pseudodifferential calculus.
+  where $[\gf_k,\gf_n] \subseteq \gf_{k+n}.$ This is called a stratified Lie algebra. Being finite dimensional, it is easy to see that $\gf$ is nilpotent.
+
+  The number
+  \[
+    Q := \sum_{n=1}^\infty n\mathrm{dim}(\gf_n)
+  \]
+  is called the homogeneous dimension of $\gf.$
+\end{frame}
+
+\begin{frame}{Graded Lie groups}
+  Exponentiating $\gf,$ we get a simply connected Lie group
+  \[
+    G = \exp(\gf).
+  \]
+  Nilpotent groups are very special: the exponential mapping is a homeomorphism, and the Lebesgue measure of $\gf$ pushes forward to the Haar measure of $G.$
+%   Suppose that $\gf_1$ has a basis $\{X_1,\ldots,X_m\}.$ Under the homeomorphism $G\approx \Rl^N,$ the basis
+%   \[
+%     X_1,\ldots,X_m
+%   \]
+%   is a family of vector fields with polynomial coefficients satisfying the H\"ormander condition at every point.
+\end{frame}
+
+
+\begin{frame}{Graded Lie groups}
+  The prototypical example is the Heisenberg Lie group. This one has $\gf = \mathrm{span}\{\Xc,\Yc,\Tc\},$ with $[\Xc,\Yc] = \Tc$ and all other commutators vanishing. The grading is
+  \[
+    \gf_1 = \mathrm{span}\{\Xc,\Yc\},\quad \gf_2 = \mathrm{span}\{\Tc\}.
+  \]
+\end{frame}
+
+\begin{frame}{The osculating group}
+  From the data of $(X,H),$ we define the {\it associated graded bundle} $\mathfrak{t}_HX$, which is the graded vector bundle over $X$ formed by
+  \[
+      \mathfrak{t}_HX=\bigoplus_{n=1}^N (\mathfrak{t}_HX)^n,\qquad\text{where}\qquad (\mathfrak{t}_HX)^n=H^n/H^{n-1}.
+  \]
+  If $X\in\Gamma (\mathfrak{t}_HX)^n$, and $Y\in \Gamma(\mathfrak{t}_HX)^m$, then
+  $[X,Y]$ is a well-defined section of $(\mathfrak{t}_HX)^{n+m}$. Here, $\Gamma E$ denotes the space of smooth sections of a vector bundle $E.$ In fact more is true, for smooth functions $f,g$, we then have
+  \[
+      [fX,gY]-fg[X,Y]\in\Gamma H^{n+m-1}.
+  \]
+  This implies that the commutator of vector fields descends to a Lie bracket on the the fibres of $\tf_HX.$ That is, $\tf_HX$ is a bundle of graded nilpotent Lie groups.
+
+  The fibrewise exponential $T_HX := \exp(\tf_HX)$ is called the \emph{osculating group} of the filtration $H.$
+
+  \pause
+  We should think of the $T_HX$ as being an infinitesimal model for $X$ with its filtration $H.$
 \end{frame}
 
 \begin{frame}{The Connes tangent groupoid}
@@ -305,6 +406,13 @@
     (f\ast g)(x,y,h) = \int_{X} f(x,w,h)g(w,y,h)\,dw,\quad (f\ast g)((x,z),0) =\int_{T_xX} f((x,z-z'),0)g((x,z'),0)\,dz'.
   \]
   That is: the convolution of distributions on $\mathbb{T}X$ looks like composition of kernels of pseudodifferential operators.
+
+  Can we use this as a basis to define an algebra of pseudodifferential operators?
+\end{frame}
+
+
+\begin{frame}{The zoom action}
+
 \end{frame}
 
 
