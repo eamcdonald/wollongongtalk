@@ -1,0 +1,171 @@
+\documentclass{beamer}
+
+
+
+%\usepackage{beamerthemesplit}
+\usetheme{Boadilla}
+%\usetheme{default}
+%\useinnertheme{rounded}
+
+%\useoutertheme{shadow}
+\usecolortheme{rose}
+%\usefonttheme{serif}
+\setbeamertemplate{navigation symbols}{}
+\usetheme{Madrid}
+
+\usepackage{amssymb,amsmath,amscd,amsfonts,amsthm,dsfont,color,graphicx}
+\usepackage{amscd}
+%\usepackage[numbers]{natbib}
+% \usepackage[french]{babel}
+%\usepackage[active]{srcltx}
+
+
+\def\qd{\,{\mathchar'26\mkern-12mu d}}
+
+% \date[]{}
+
+ \newcommand\makebeamertitle{\frame{\maketitle}}%
+
+ \AtBeginDocument{
+   \let\origtableofcontents=\tableofcontents
+   \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+   \def\gobbletableofcontents#1{\origtableofcontents}
+ }
+\numberwithin{equation}{section}
+  \theoremstyle{plain}
+  \newtheorem*{thm*}{\protect\theoremname}
+  \theoremstyle{plain}
+  \newtheorem*{cor*}{\protect\corollaryname}
+ \theoremstyle{definition}
+ \newtheorem*{defn*}{\protect\definitionname}
+ \theoremstyle{plain}
+\newtheorem*{lem*}{\protect\lemmaname}
+  \theoremstyle{plain}
+  \newtheorem*{rem*}{\protect\remarkname}
+   \theoremstyle{definition}
+ \newtheorem*{prop*}{\protect\propositionname}
+
+\usetheme{Madrid}
+
+\makeatother
+
+  \providecommand{\corollaryname}{Corollary}
+  \providecommand{\definitionname}{Definitioninition}
+  \providecommand{\theoremname}{Theorem}
+   \providecommand{\lemmaname}{Lemma}
+   \providecommand{\remarkname}{Remark}
+   \providecommand{\propositionname}{Proposition}
+   
+   
+\newcommand{\Rl}{\mathbb{R}}
+\newcommand{\Cplx}{\mathbb{C}}
+\newcommand{\Itgr}{\mathbb{Z}}
+\newcommand{\Ntrl}{\mathbb{N}}
+\newcommand{\Circ}{\mathbb{T}}
+\newcommand{\Sb}{\mathbb{S}}
+\newcommand{\Disc}{\mathbb{D}}
+\newcommand{\Aff}{\mathbb{A}}
+
+% The Caligraphic alphabet
+\newcommand{\Ac}{\mathcal{A}}
+\newcommand{\Bc}{\mathcal{B}}
+\newcommand{\Cc}{\mathcal{C}}
+\newcommand{\Dc}{\mathcal{D}}
+\newcommand{\Ec}{\mathcal{E}}
+\newcommand{\Fc}{\mathcal{F}}
+\newcommand{\Gc}{\mathcal{G}}
+\newcommand{\Hc}{\mathcal{H}}
+\newcommand{\Ic}{\mathcal{I}}
+\newcommand{\Jc}{\mathcal{J}}
+\newcommand{\Kc}{\mathcal{K}}
+\newcommand{\Lc}{\mathcal{L}}
+\newcommand{\Mv}{\mathcal{M}}
+\newcommand{\Nv}{\mathcal{N}}
+\newcommand{\Oc}{\mathcal{O}}
+\newcommand{\Pc}{\mathcal{P}}
+\newcommand{\Qc}{\mathcal{Q}}
+\newcommand{\Rc}{\mathcal{R}}
+\newcommand{\Sc}{\mathcal{S}}
+\newcommand{\Tc}{\mathcal{T}}
+\newcommand{\Uc}{\mathcal{U}}
+\newcommand{\Vc}{\mathcal{V}}
+\newcommand{\Wc}{\mathcal{W}}
+\newcommand{\Xc}{\mathcal{X}}
+\newcommand{\Yc}{\mathcal{Y}}
+\newcommand{\Zc}{\mathcal{Z}}
+
+
+\newcommand{\Sp}{\mathrm{Sp}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\Op}{\mathrm{Op}}
+\newcommand{\sym}{\mathrm{sym}}
+\newcommand{\Vol}{\mathrm{Vol}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\dist}{\mathrm{dist}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Poly}{\mathrm{Poly}}
+
+\newcommand{\spec}{\mathrm{Spec}}
+\newcommand{\abs}{\mathrm{abs}}
+
+\newcommand{\CV}{\mathrm{CV}}
+\newcommand{\PCV}{\mathrm{PCV}}
+
+
+% Used for highlighting. To remove all highlighting just make the command blank
+\newcommand{\hl}{\color{red}}
+
+
+
+\newcommand{\dom}{\mathrm{dom}}
+\newcommand{\Bl}{\mathbb{B}^4}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\BS}{\mathfrak{BS}}
+\newcommand{\dyad}{\mathrm{dyad}}
+\newcommand{\Qs}{\mathscr{Q}}
+\newcommand{\Av}{\mathrm{Av}}
+\newcommand{\loc}{\mathrm{loc}}
+% DOI transformer
+\newcommand{\Ti}{\mathcal{T}}
+\newcommand{\sa}{\mathrm{sa}}
+
+\newcommand{\mf}{\mathfrak{m}}
+
+
+\newcommand{\Str}{\operatorname{Str}}
+   
+\begin{document}
+
+\title[Lorem Ipsum]{Lorem Ipsum Dolor Sit Amet}
+
+
+\author[E. McDonald]{Edward McDonald (Penn State University)}
+
+
+\institute[]{\tiny{Consqeuteur Elit. University} }
+
+\makebeamertitle
+
+
+\begin{frame}{Introduction}
+
+\end{frame}
+
+\begin{frame}{Plan for this talk}
+    \begin{enumerate}
+        \item{}
+    \end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\structure{\begin{center}
+{\Huge{}Thank you for listening!}
+\par\end{center}}\end{frame}
+
+
+
+\end{document}
+
